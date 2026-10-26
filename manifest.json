@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "SideThread",
+  "version": "2.0.1",
+  "description": "Select any part of an AI answer and ask about it in a beautiful side panel. No more scrolling to the bottom of the chat.",
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["themes.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
+  "action": {
+    "default_title": "SideThread settings",
+    "default_icon": { "16": "icon16.png", "48": "icon48.png" }
+  },
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "Toggle SideThread side panel"
+    }
+  }
+}
